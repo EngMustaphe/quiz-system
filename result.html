@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz Result</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    padding:20px;
+}
+
+.result-container{
+    width:100%;
+    max-width:450px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.2);
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    color:white;
+    box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+.result-container h1{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.result-container p{
+    color:#cbd5e1;
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+.score-box{
+    background:white;
+    color:#0f172a;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:25px;
+}
+
+.score{
+    font-size:55px;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+.message{
+    margin-top:15px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    background:linear-gradient(135deg,#1d4ed8,#1e40af);
+}
+
+.footer{
+    margin-top:20px;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="result-container">
+
+    <h1>Quiz Result</h1>
+
+    <p>Your score has been calculated successfully</p>
+
+    <div class="score-box">
+
+        <div class="score" id="score">
+            0 / 0
+        </div>
+
+        <div class="message" id="message">
+            Good Job
+        </div>
+
+    </div>
+
+    <button onclick="tryAgain()">
+        Try Again
+    </button>
+
+    <div class="footer">
+        Developed By Mustafe Mahdi
+    </div>
+
+</div>
+
+<script>
+
+// Get Data From LocalStorage
+let score = localStorage.getItem("quizScore");
+let total = localStorage.getItem("totalQuestions");
+
+// Show Score
+document.getElementById("score").innerHTML =
+score + " / " + total;
+
+// Result Message
+let message = "";
+
+if(score == total){
+    message = "Excellent 🎉";
+}
+else if(score >= 2){
+    message = "Good Job 👍";
+}
+else{
+    message = "Keep Practicing 💡";
+}
+
+// Show Message
+document.getElementById("message").innerHTML = message;
+
+// Try Again Button
+function tryAgain(){
+    window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>
